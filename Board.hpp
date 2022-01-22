@@ -22,17 +22,17 @@ class Board
         int check_diagonals(char) const;
         int check_state(char) const;
 
-        // Przyklad zastosowania kontenera pair
+        // example of using std::pair
         std::pair<int, int> convert_index_to_coords(int) const;
         void draw_mark(char, int);
 
-        // Przyklad zastosowania kontenera pair w kontenerze vector
+        // example of using std::pair in a std::vector container
         std::vector<std::pair<Board, int>> possible_next_boards(char);
 
         bool is_tie(char) const;
         
     private:
-        // Przyklad zastosowania kontenera array
+        // example of using a std::array container in a std::array container
         std::array<std::array<Field, 3>, 3> state;
 };
 
