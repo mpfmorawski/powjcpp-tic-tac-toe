@@ -17,7 +17,7 @@ void Board::print() const
     }
     output_str = output.str();
 
-    // Przyklad zastosowania algorytmu std::find_end
+    // example of using std::find_end algorithm
     output_str.erase(std::find_end(output_str.begin(), output_str.end(), dash_line.begin(), dash_line.end()), output_str.end());
 
     std::cout << output_str;
@@ -28,10 +28,10 @@ int Board::check_rows(char player) const
     char opponent = (player == 'X') ? 'O' : 'X';
     for(const std::array<Field, 3> row : state)
     {   
-        // Przyklad zastosowania algorytmu std::count_if
+        // example of using std::count_if algorithm
         if(std::count_if(row.begin(), row.end(), [&](Field f){return f.getMark() == player;}) == 3)
             return 1;
-        // Przyklad zastosowania algorytmu std::count_if
+        // example of using std::count_if algorithm
         if(std::count_if(row.begin(), row.end(), [&](Field f){return f.getMark() == opponent;}) == 3)
             return -1;
     }
@@ -48,10 +48,10 @@ int Board::check_columns(char player) const
         for(const std::array<Field, 3> row : state)
             column.push_back(row[i].getMark());
 
-        // Przyklad zastosowania algorytmu std::count_if
+        // example of using std::count_if algorithm
         if(std::count_if(column.begin(), column.end(), [&](char c){return c == player;}) == 3)
             return 1;
-        // Przyklad zastosowania algorytmu std::count_if
+        // example of using std::count_if algorithm
         if(std::count_if(column.begin(), column.end(), [&](char c){return c == opponent;}) == 3)
             return -1;
         column = "";
@@ -62,7 +62,7 @@ int Board::check_columns(char player) const
 int Board::check_diagonals(char player) const
 {   
     char opponent = (player == 'X') ? 'O' : 'X';
-    // Przyklad zastosowania kontenera vector
+    // example of using a std::vector container
     std::vector<int> index1{0, 1, 2};
     std::vector<int> index2{0, 1, 2};
     std::string diagonal;
@@ -70,14 +70,14 @@ int Board::check_diagonals(char player) const
     {
         for(const int ind : index1)
             diagonal.push_back(state[ind][index2[ind]].getMark());
-        // Przyklad zastosowania algorytmu std::count_if
+        // example of using std::count_if algorithm
         if(std::count_if(diagonal.begin(), diagonal.end(), [&](char c){return c == player;}) == 3)
             return 1;
-        // Przyklad zastosowania algorytmu std::count_if
+        // example of using std::count_if algorithm
         if(std::count_if(diagonal.begin(), diagonal.end(), [&](char c){return c == opponent;}) == 3)
             return -1;
         diagonal = "";
-        // Przyklad zastosowania algorytmu std::reverse
+        // example of using std::reverse algorithm 
         std::reverse(index2.begin(), index2.end());
     }
     return 0;
@@ -97,7 +97,7 @@ int Board::check_state(char player) const
 
 std::pair<int, int> Board::convert_index_to_coords(int index) const
 {
-    // Przyklad zastosowania kontenera pair
+    // example of using std::pair
     std::pair<int, int> coords;
     coords.first = (index - 1) / 3;
     coords.second = index - (coords.first * 3) - 1;
@@ -129,7 +129,7 @@ void Board::draw_mark(char mark, int index)
         }
         catch(const std::string s)
         {
-            // Pole jest zajete
+            // field is occupied
         }
 
     }
@@ -140,7 +140,7 @@ bool Board::is_tie(char player) const
 {
     for(const std::array<Field, 3> row : state)
     {   
-        // Przyklad zastosowania algorytmu std::count_if
+        // example of using std::count_if algorithm
         if(std::find_if(row.begin(), row.end(), [&](Field f){return f.getMark() == ' ';}) != row.end())
             return false;
     }

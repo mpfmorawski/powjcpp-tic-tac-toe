@@ -139,14 +139,14 @@ std::pair<int, int> Game::minimax(Board& b, int depth, char player, bool isMaxMo
 
     std::pair<int, int> best_move;
     best_move.first = 0;
-    // Sprawdzenie, czy jest stan koncowy lub glebokosc <= 0
+    // check if there is an final state or depth <= 0
     int score = b.check_state(player);
     if(score != 0 || depth <= 0 || b.is_tie(player) == true)
     {
         best_move.second = score;
         return best_move;
     }
-    // Jesli nie stan koncowy lub glebokosc <= 0, to sprawdzenie: MAX czy MIN
+    // if not final state or depth <= 0, then check: MAX or MIN
     if(isMaxMove)
     {
         std::vector<std::pair<int, int>> moves_and_scores;
